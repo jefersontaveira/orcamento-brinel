@@ -367,3 +367,85 @@ body {
     font-size: 1.1rem; 
     color: inherit;
 }
+
+/* ==========================================
+   Passo a Passo (Processo)
+   ========================================== */
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.process-step {
+    padding: 2rem 1.5rem;
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.process-step .step-number {
+    width: 40px;
+    height: 40px;
+    background-color: var(--accent);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+}
+
+.process-step h3 {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 0.8rem;
+}
+
+.process-step p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* ==========================================
+   Proteção de Escopo (Alerta)
+   ========================================== */
+.scope-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    border-left: 4px solid #eab308; /* Amarelo para chamar atenção sutilmente */
+    background: rgba(30, 41, 59, 0.5); /* Um pouco mais escuro que os outros cards */
+}
+
+.scope-alert .alert-icon {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.scope-alert .alert-content p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.scope-alert .alert-content strong {
+    color: #f8fafc;
+}
+
+/* Responsividade do Alerta */
+@media (max-width: 768px) {
+    .scope-alert {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        border-left: none;
+        border-top: 4px solid #eab308;
+    }
+}
