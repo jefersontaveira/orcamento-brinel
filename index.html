@@ -59,7 +59,7 @@
                     <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
                 </div>
                 <h3>1. Catálogo Expresso</h3>
-                <h4 style="font-size: 2rem; color: #fff; margin-bottom: 1rem;">R$ 2.300</h4>
+                <h4 style="font-size: 2rem; color: #fff; margin-bottom: 1rem;">R$ 2.500</h4>
                 <p>Ideal para quem quer velocidade. Um catálogo online de altíssima performance, com botões que levam o cliente direto pro seu WhatsApp com a dúvida já escrita. Zero custos mensais com servidor. As atualizações de produto são feitas via código pelo desenvolvedor.</p>
             </div>
 
@@ -69,7 +69,7 @@
                     <svg viewBox="0 0 24 24"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg>
                 </div>
                 <h3>2. Catálogo Dinâmico</h3>
-                <h4 style="font-size: 2rem; color: var(--accent); margin-bottom: 1rem;">R$ 4.300</h4>
+                <h4 style="font-size: 2rem; color: var(--accent); margin-bottom: 1rem;">R$ 4.500</h4>
                 <p>Liberdade total para você. Além de ter a velocidade do plano Expresso, você ganha um Painel de Controle super simples. Você mesmo troca fotos, preços e cria novas categorias pelo celular ou computador, sem depender de ninguém e sem pagar mensalidade de banco de dados.</p>
             </div>
 
@@ -79,7 +79,7 @@
                     <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
                 </div>
                 <h3>3. Loja Virtual Completa</h3>
-                <h4 style="font-size: 2rem; color: #fff; margin-bottom: 1rem;">R$ 8.500</h4>
+                <h4 style="font-size: 2rem; color: #fff; margin-bottom: 1rem;">R$ 10.000</h4>
                 <p>Sua empresa vendendo no automático, 24h por dia. Carrinho de compras, cálculo de frete, pagamento online (PIX, Cartão) e disparos automáticos de e-mail para o cliente avisando do status do pedido. Controle de estoque integrado e profissional.</p>
             </div>
         </div>
@@ -109,9 +109,48 @@
             </div>
 
             <p>Pronto para transformar sua presença online e alavancar suas vendas?</p>
-            <a href="#" class="btn-scroll btn-large btn-glow">Aprovar Orçamento no WhatsApp</a>
+            <button id="openModalBtn" class="btn-scroll btn-large btn-glow" style="cursor: pointer;">Escolher meu Plano</button>
         </div>
     </section>
+
+    
+    <div id="planModal" class="modal-overlay">
+        <div class="modal-content glass-card">
+            <span class="close-modal">&times;</span>
+            <h3 style="text-align: center; margin-bottom: 0.5rem;">Qual plano faz mais sentido?</h3>
+            <p style="text-align: center; margin-bottom: 2rem; font-size: 0.9rem;">Selecione uma opção abaixo para enviarmos pro WhatsApp.</p>
+            
+            <form id="whatsappForm">
+                <div class="radio-group">
+                    <label class="radio-card">
+                        <input type="radio" name="plan" value="Catálogo Expresso (R$ 2.500)" required>
+                        <span class="card-content">
+                            <strong>Catálogo Expresso</strong>
+                            <span>R$ 2.300</span>
+                        </span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="plan" value="Catálogo Dinâmico (R$ 4.500)">
+                        <span class="card-content">
+                            <strong>Catálogo Dinâmico</strong>
+                            <span>R$ 4.300</span>
+                        </span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="plan" value="Loja Virtual Completa (R$ 10.000)">
+                        <span class="card-content">
+                            <strong>Loja Completa</strong>
+                            <span>R$ 8.500</span>
+                        </span>
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn-scroll btn-large btn-glow" style="width: 100%; margin-top: 2rem; cursor: pointer;">
+                    Falar no WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
 
     <script src="js/script.js"></script>
 </body>

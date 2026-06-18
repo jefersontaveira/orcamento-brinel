@@ -276,3 +276,94 @@ body {
     .analysis-row, .analysis-row.reverse { flex-direction: column; gap: 2rem; }
     .glass-card { padding: 1.5rem; }
 }
+
+/* ==========================================
+   Modal (Pop-up de WhatsApp)
+   ========================================== */
+.modal-overlay {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 450px;
+    padding: 2.5rem;
+    transform: translateY(-30px);
+    transition: transform 0.3s ease;
+    background: var(--bg-card); /* Fundo sólido para garantir leitura */
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px; 
+    right: 20px;
+    font-size: 1.8rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: color 0.3s ease;
+    line-height: 1;
+}
+
+.close-modal:hover { 
+    color: #ef4444; 
+}
+
+/* Estilização das Opções (Radio Cards) */
+.radio-group { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 1rem; 
+}
+
+.radio-card input { 
+    display: none; /* Esconde a bolinha padrão do input radio */
+}
+
+.radio-card .card-content {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 1.2rem 1.5rem; 
+    border: 2px solid #334155; 
+    border-radius: 12px;
+    cursor: pointer; 
+    transition: all 0.3s ease; 
+    color: var(--text-muted);
+}
+
+.radio-card:hover .card-content {
+    border-color: #475569;
+}
+
+/* Estado Ativo (Selecionado) */
+.radio-card input:checked + .card-content {
+    border-color: var(--accent);
+    background: rgba(59, 130, 246, 0.1);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+}
+
+.radio-card .card-content strong { 
+    font-size: 1.1rem; 
+    color: inherit;
+}

@@ -1,35 +1,76 @@
 document.addEventListener("DOMContentLoaded", () => {
     
-    // 1. Lógica do Brilho do Mouse (Cursor Glow)
+    // --- Lógica do Brilho do Mouse (Cursor Glow) ---
     const cursorGlow = document.getElementById("cursor-glow");
-    
     if (cursorGlow) {
         document.addEventListener("mousemove", (e) => {
-            // Atualiza a posição do brilho baseado na posição do mouse
             cursorGlow.style.left = e.clientX + "px";
             cursorGlow.style.top = e.clientY + "px";
         });
     }
 
-    // 2. Animação de Entrada ao Rolar a Página (Scroll Animations)
-    // Seleciona todos os elementos que possuem a classe 'hidden'
+    // --- Animação de Entrada ao Rolar a Página ---
     const hiddenElements = document.querySelectorAll('.hidden');
-
-    // Cria um observador
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-            // Se o elemento estiver visível na tela
             if (entry.isIntersecting) {
                 entry.target.classList.add('show');
-                // Opcional: parar de observar após a animação acontecer uma vez
-                // observer.unobserve(entry.target); 
             }
         });
-    }, {
-        // threshold de 0.1 significa que a animação dispara quando 10% do elemento aparece
-        threshold: 0.1 
+    }, { threshold: 0.1 });
+
+    hiddenElements.forEach((el) => observer.observe(el));
+
+    // --- Lógica do Modal e WhatsApp ---
+    const modal = document.getElementById('planModal');
+    const openModalBtn = document.getElementById('openModalBtn');
+    const closeModalBtn = document.querySelector('.close-modal');
+    const whatsappForm = document.getElementById('whatsappForm');
+
+    // Abrir Modal
+    if (openModalBtn && modal) {
+        openModalBtn.addEventListener('click', () => {
+            modal.classList.add('active');
+        });
+    }
+
+    // Fechar Modal (no botão X)
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+    }
+
+    // Fechar Modal ao clicar fora da caixa (no fundo escuro)
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.remove('active');
+        }
     });
 
-    // Pede ao observador para ficar de olho em cada elemento escondido
-    hiddenElements.forEach((el) => observer.observe(el));
+    // Processar o envio do formulário e abrir o WhatsApp
+    if (whatsappForm) {
+        whatsappForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Evita recarregar a página
+
+            // Pega o valor do plano selecionado
+            const selectedPlan = document.querySelector('input[name="plan"]:checked').value;
+            
+            // Número com código do país (55) e DDD (85)
+            const phone = "5585981311975";
+            
+            // Monta a mensagem
+            const message = `Olá! Estudei a proposta de desenvolvimento e decidi avançar com o plano: *${selectedPlan}*. Podemos conversar sobre os próximos passos?`;
+            
+            // Codifica a mensagem para o formato de URL (troca espaços por %20, etc)
+            const encodedMessage = encodeURIComponent(message);
+            
+            // Cria o link do WhatsApp e abre em nova aba
+            const whatsappUrl = `https://wa.me/${phone}?text=${encodedMessage}`;
+            window.open(whatsappUrl, '_blank');
+            
+            // Opcional: fechar o modal depois de enviar
+            modal.classList.remove('active');
+        });
+    }
 });
